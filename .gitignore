@@ -1,0 +1,39 @@
+# General
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+.envrc
+.idea/
+.vscode/
+coverage/
+dist/
+build/
+
+# Node / Next.js (web)
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/.turbo/
+web/.pnpm-store/
+web/.cache/
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+
+# Hardhat / Solidity (contracts)
+contracts/node_modules/
+contracts/artifacts/
+contracts/cache/
+contracts/coverage/
+contracts/.coverage/
+contracts/.openzeppelin/
+contracts/typechain/
+contracts/coverage.json
+contracts/npm-debug.log*
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
