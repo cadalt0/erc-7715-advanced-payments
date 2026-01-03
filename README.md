@@ -43,6 +43,12 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 - Envio indexer setup and schema live in [web/envio/config.yaml](web/envio/config.yaml) and the generated workspace under `web/envio/`.
 
 
+## Feedback
+- Issue reference: https://github.com/MetaMask/metamask-docs/issues/2593
+- No dev playground to test ERC-7715; requires spinning up the web app to exercise permissions. A hosted sandbox would help.
+- LLM context delivery is a single huge text blob; most models can’t ingest it. Break into submodules or add pointers/ranges (e.g., sections 1-100).
+- Dev support from the MetaMask team during the hackathon was top-tier.
+- Overall building experience: 9/10.
 
 ## Running the Web App (quick)
 - `cd web`
