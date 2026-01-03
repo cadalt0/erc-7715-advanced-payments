@@ -34,8 +34,10 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 ## Advanced Permissions Usage
 - Requesting/capturing permissions context (MetaMask Advanced Permissions grant) happens when a member joins or updates their grant: see `joinCircle` and `updateMemberPermission` in [contracts/Circle.sol#L70-L152](contracts/Circle.sol#L70-L152).
 - Redeeming Advanced Permissions on-chain (executing with the granted context) happens in `transferToken`, which calls `DelegationManager.redeemDelegations`: [contracts/Circle.sol#L303-L352](contracts/Circle.sol#L303-L352).
-- Frontend request flow (grant + capture permissionsContext) lives in the MetaMask permissions helper at [web/.next/dev/static/chunks/Documents_0hack_mm%20Advanced_v5%20envio_erc-7715-advanced-payments_web_c38794b0._.js.map](web/.next/dev/static/chunks/Documents_0hack_mm%20Advanced_v5%20envio_erc-7715-advanced-payments_web_c38794b0._.js.map) — see `grantCircleDelegation` and its call to `requestPermission`.
-- Frontend redeem path uses the same stored `permissionsContext` when building delegated executions; see execution packing in the compiled bundle [web/.next/dev/server/chunks/ssr/3d15c_@metamask_delegation-toolkit_dist_aa47cfb6._.js.map](web/.next/dev/server/chunks/ssr/3d15c_@metamask_delegation-toolkit_dist_aa47cfb6._.js.map) where `redeemDelegations` calldata is prepared.
+- Frontend request flow (grant + capture permissionsContext) lives in the MetaMask permissions helper at [https://github.com/cadalt0/erc-7715-advanced-payments/blob/main/web/lib/grant-delegation.ts](https://github.com/cadalt0/erc-7715-advanced-payments/blob/main/web/lib/grant-delegation.ts) — see `grantCircleDelegation` and its call to `requestPermission`.
+- https://github.com/cadalt0/erc-7715-advanced-payments/tree/main/web/lib/metamask-permissions
+- 
+- Frontend redeem path uses the same stored `permissionsContext` when building delegated executions; see execution packing in the compiled bundle [https://github.com/cadalt0/erc-7715-advanced-payments/blob/main/web/lib/transfer-token.ts](https://github.com/cadalt0/erc-7715-advanced-payments/blob/main/web/lib/transfer-token.ts) where `redeemDelegations` calldata is prepared.
 
 ## Envio Usage
 - Circle discovery using Envio `NEXT_PUBLIC_ENVIO_MODE`: [web/lib/get-circles.ts#L1-L65](web/lib/get-circles.ts#L1-L65) and hook wiring in [web/hooks/use-circles.ts#L1-L70](web/hooks/use-circles.ts#L1-L70).
