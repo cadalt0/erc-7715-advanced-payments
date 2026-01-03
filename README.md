@@ -49,6 +49,20 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 - Permissions are delegated per member; set sensible limits and expiries.
 
 
+
+## Flow (mermaid)
+```mermaid
+flowchart TD
+	A[User Wallet] --> B[Advanced Finance Frontend]
+	B -->|Create Circle / Payment| C[ERC-7715 Contracts]
+	C -->|Emit Events| D[Envio HyperIndex]
+	D -->|Indexed Data| B
+	B -->|Execute/Simulate| C
+	B -->|Display Dashboards| E[UI: Circles, Members, Payments]
+	E -->|User Actions| B
+```
+
+
 ## Learn More
 - Contracts walkthrough: [contracts/README.md](contracts/readme.md)
 - Web developer notes: [web/README.md](web/README.md)
