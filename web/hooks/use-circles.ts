@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { type Address } from "viem"
-import { findCirclesByMember, type CircleData } from "@/lib/circle-finder"
+import { getCircles, type CircleData } from "@/lib/get-circles"
 
 interface UseCirclesResult {
   circles: CircleData[]
@@ -13,6 +13,7 @@ interface UseCirclesResult {
 
 /**
  * React hook to fetch and manage circles for a connected wallet
+ * Automatically switches between Envio and RPC based on NEXT_PUBLIC_ENVIO_MODE
  * 
  * @param walletAddress - The connected wallet address to check for circles
  * @returns Circle data, loading state, and error state
@@ -34,7 +35,7 @@ export function useCircles(walletAddress: Address | undefined): UseCirclesResult
     setError(null)
 
     try {
-      const foundCircles = await findCirclesByMember(walletAddress)
+      const foundCircles = await getCircles(walletAddress)
       setCircles(foundCircles)
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Failed to fetch circles"

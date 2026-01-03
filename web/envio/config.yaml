@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: envio
+networks:
+- id: 84532
+  start_block: 0
+  contracts:
+  - name: circle
+    address:
+    - 0x1e30ca31827b66E9b7d4d32e67F59F7E83983213
+    handler: src/EventHandlers.ts
+    events:
+    - event: E1(uint256 indexed a, string b, address indexed c, address indexed d)
+unordered_multichain_mode: true
+preload_handlers: true
