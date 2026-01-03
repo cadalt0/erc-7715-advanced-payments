@@ -18,6 +18,7 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 3. A trusted person joins, granting a token allowance (amount + expiry) via ERC-7715.
 4. Any member can spend from a member’s allowance up to the limit; every transfer is on-chain and permission-gated.
 5. Members can update or revoke their allowance; admins can prune members or join codes.
+<img width="1993" height="692" alt="diagram-export-1-3-2026-8_33_02-AM" src="https://github.com/user-attachments/assets/31a6500c-776b-48b2-bf94-85e70d7325aa" />
 
 
 ## Flow (mermaid)
