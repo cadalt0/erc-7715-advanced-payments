@@ -22,36 +22,49 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 
 ## Flow (mermaid)
 ```mermaid
-flowchart LR
+flowchart TB
 		subgraph User
-			A[Wallet]
+			U1[User Wallet]
+			U2[Invitee Wallets]
 		end
 
-		subgraph App[Advanced Finance Frontend]
-			B1[Create Circle / Payment]
-			B2[Read Circles / Members / Payments]
-			B3[Execute / Simulate]
+		subgraph Frontend[Advanced Finance Frontend]
+			F1[Create Circle]
+			F2[Create Join Code]
+			F3[Join Circle]
+			F4[Grant/Use Advanced Permission]
+			F5[Execute Payments / Actions]
+			F6[Dashboard & Activity]
 		end
 
-		subgraph Chain[ERC-7715 Contracts]
-			C1[CircleFactory]
-			C2[Circle Instances]
+		subgraph Contracts[ERC-7715 Contracts]
+			C0[CircleFactory]
+			C1[Circle Instances]
+			Cperm[Advanced Permission Tokens]
 		end
 
-		subgraph Indexer[Envio HyperIndex]
-			D1[Ingest E1..E7 Events]
-			D2[GraphQL API]
+		subgraph Envio[Envio HyperIndex]
+			E1[Ingest Events E1..E7]
+			E2[Store + Serve via GraphQL]
 		end
 
-		A -->|sign tx| B1
-		B1 -->|tx| C1
-		C1 -->|E1: CircleCreated| D1
-		D1 -->|register circle + store| D2
-		C2 -->|E2..E7 member/permission/payment events| D1
+		%% creation
+		U1 -->|sign tx| F1 -->|deploy circle| C0 -->|E1: CircleCreated| Envio
+		Envio --> E1 --> E2 -->|circles list| F6
 
-		B2 -->|query indexed data| D2
-		B3 -->|call| C2
-		D2 -->|circles, members, payments| B2
+		%% join code
+		F2 -->|create join code| C1 -->|E2: JoinCodeCreated| Envio
+		F3 -->|redeem code| C1 -->|E6: JoinCodeUsed| Envio
+
+		%% permissions
+		F4 -->|grant ERC-7715 permission token| Cperm -->|E3/E4/E5: member/permission updates| Envio
+
+		%% execution
+		F5 -->|use member permission| C1 -->|E7 or on-chain effects| Envio
+
+		%% visibility
+		E2 -->|members, permissions, payments, join codes| F6
+		F6 -->|user actions| F5
 ```
 
 
