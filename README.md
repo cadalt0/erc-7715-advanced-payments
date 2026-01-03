@@ -48,6 +48,8 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 - Keep `.env` and Envio env files local; they are git-ignored.
 - Permissions are delegated per member; set sensible limits and expiries.
 
+
 ## Learn More
-- Contracts walkthrough: contracts/README.md
-- Web developer notes: web/README.md
+- Contracts walkthrough: [contracts/README.md](contracts/README.md)
+- Web developer notes: [web/README.md](web/README.md)
+- Base Sepolia factory: [0x1e30ca31827b66E9b7d4d32e67F59F7E83983213](https://sepolia.basescan.org/address/0x1e30ca31827b66E9b7d4d32e67F59F7E83983213)
