@@ -50,6 +50,6 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 
 
 ## Learn More
-- Contracts walkthrough: [contracts/README.md](contracts/README.md)
+- Contracts walkthrough: [contracts/README.md](contracts/readme.md)
 - Web developer notes: [web/README.md](web/README.md)
 - Base Sepolia factory: [0x1e30ca31827b66E9b7d4d32e67F59F7E83983213](https://sepolia.basescan.org/address/0x1e30ca31827b66E9b7d4d32e67F59F7E83983213)
