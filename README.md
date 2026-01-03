@@ -22,7 +22,7 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 ## Repo Layout
 - contracts/ — ERC-7715 circle contracts and types (see contracts/README.md for dev details).
 - web/ — Next.js front end (developer notes in web/README.md).
-- web/envio/ — Optional Envio indexer workspace used by the web app when enabled.
+- web/envio/ —  Envio indexer workspace used by the web app when enabled.
 
 
 ## Advanced Permissions Usage
@@ -32,7 +32,7 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 - Frontend redeem path uses the same stored `permissionsContext` when building delegated executions; see execution packing in the compiled bundle [web/.next/dev/server/chunks/ssr/3d15c_@metamask_delegation-toolkit_dist_aa47cfb6._.js.map](web/.next/dev/server/chunks/ssr/3d15c_@metamask_delegation-toolkit_dist_aa47cfb6._.js.map) where `redeemDelegations` calldata is prepared.
 
 ## Envio Usage
-- Circle discovery switches between Envio and RPC based on `NEXT_PUBLIC_ENVIO_MODE`: [web/lib/get-circles.ts#L1-L65](web/lib/get-circles.ts#L1-L65) and hook wiring in [web/hooks/use-circles.ts#L1-L70](web/hooks/use-circles.ts#L1-L70).
+- Circle discovery using Envio `NEXT_PUBLIC_ENVIO_MODE`: [web/lib/get-circles.ts#L1-L65](web/lib/get-circles.ts#L1-L65) and hook wiring in [web/hooks/use-circles.ts#L1-L70](web/hooks/use-circles.ts#L1-L70).
 - Envio GraphQL fetcher is implemented in [web/lib/envio-circles.ts](web/lib/envio-circles.ts) (used when Envio mode is on).
 - Envio indexer setup and schema live in [web/envio/config.yaml](web/envio/config.yaml) and the generated workspace under `web/envio/`.
 
