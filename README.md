@@ -19,6 +19,42 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 4. Any member can spend from a member’s allowance up to the limit; every transfer is on-chain and permission-gated.
 5. Members can update or revoke their allowance; admins can prune members or join codes.
 
+
+## Flow (mermaid)
+```mermaid
+flowchart LR
+		subgraph User
+			A[Wallet]
+		end
+
+		subgraph App[Advanced Finance Frontend]
+			B1[Create Circle / Payment]
+			B2[Read Circles / Members / Payments]
+			B3[Execute / Simulate]
+		end
+
+		subgraph Chain[ERC-7715 Contracts]
+			C1[CircleFactory]
+			C2[Circle Instances]
+		end
+
+		subgraph Indexer[Envio HyperIndex]
+			D1[Ingest E1..E7 Events]
+			D2[GraphQL API]
+		end
+
+		A -->|sign tx| B1
+		B1 -->|tx| C1
+		C1 -->|E1: CircleCreated| D1
+		D1 -->|register circle + store| D2
+		C2 -->|E2..E7 member/permission/payment events| D1
+
+		B2 -->|query indexed data| D2
+		B3 -->|call| C2
+		D2 -->|circles, members, payments| B2
+```
+
+
 ## Repo Layout
 - contracts/ — ERC-7715 circle contracts and types (see contracts/README.md for dev details).
 - web/ — Next.js front end (developer notes in web/README.md).
@@ -49,18 +85,6 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 - Permissions are delegated per member; set sensible limits and expiries.
 
 
-
-## Flow (mermaid)
-```mermaid
-flowchart TD
-	A[User Wallet] --> B[Advanced Finance Frontend]
-	B -->|Create Circle / Payment| C[ERC-7715 Contracts]
-	C -->|Emit Events| D[Envio HyperIndex]
-	D -->|Indexed Data| B
-	B -->|Execute/Simulate| C
-	B -->|Display Dashboards| E[UI: Circles, Members, Payments]
-	E -->|User Actions| B
-```
 
 
 ## Learn More
