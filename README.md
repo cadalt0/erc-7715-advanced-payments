@@ -52,6 +52,9 @@ Advanced Payments is inspired by Indian UPI CIRCLE : invite trusted people, fami
 - Dev support from the MetaMask team during the hackathon was top-tier.
 - Overall building experience: 9/10.
 
+##Social Media
+https://x.com/CadaltX/status/2007780106291577048?s=20
+
 ## Running the Web App (quick)
 - `cd web`
 - `npm install --force`
